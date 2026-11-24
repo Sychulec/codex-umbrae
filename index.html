@@ -3,89 +3,485 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CODEX UMBRAE | Wear Your Story</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080807">
+<title>CODEX UMBRAE | WEAR YOUR STORY</title>
+<meta name="description" content="CODEX UMBRAE. 12 zapachów. 12 historii. Odkryj zapach, który opowiada Twoją historię.">
+
 <style>
+:root{
+  --black:#080807;
+  --dark:#100e0b;
+  --panel:#15120e;
+  --gold:#c5a16a;
+  --gold-light:#e5cca0;
+  --cream:#eadcc2;
+  --muted:#b9ad9a;
+  --line:#604a2c;
+}
 *{box-sizing:border-box}
-body{margin:0;background:#080807;color:#e8d4ad;font-family:Georgia,serif}
-header{display:flex;justify-content:space-around;align-items:center;padding:22px 12px;border-bottom:1px solid #8c6b38;gap:12px;flex-wrap:wrap}
-header a{color:#d5b77e;text-decoration:none;font-size:14px;letter-spacing:1px}
-.logo{text-align:center;font-size:25px;letter-spacing:4px;color:#e4c58c}
-.logo small{display:block;font-size:10px;letter-spacing:5px;margin-top:7px}
-.hero{min-height:650px;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.88)),url('file_00000000b31082109ef742d985d17fc4.png') center 35%/cover no-repeat;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:55px 18px}
-.hero-content{max-width:850px}
-h1{font-size:clamp(34px,7vw,66px);font-weight:normal;letter-spacing:3px;text-shadow:0 2px 15px #000}
-.subtitle{font-size:19px;letter-spacing:3px}
-button{background:#b28b4e;color:#100e0a;border:1px solid #e0c38c;padding:16px 25px;font-family:Georgia,serif;font-size:17px;letter-spacing:1px;cursor:pointer}
-button:hover{background:#d0ad70}
-section{padding:65px 18px;text-align:center}
-h2{font-size:35px;font-weight:normal;letter-spacing:3px}
-.gold{color:#c6a269}
-.intro{max-width:700px;margin:20px auto 35px;line-height:1.8;color:#c9c0b0}
-.choice,.answer{background:#11100e;border:1px solid #80633a;color:#dfc28e;padding:20px;margin:10px auto;max-width:500px;width:100%;display:block}
-.choice:hover,.answer:hover{background:#282016}
-#quiz{display:none;max-width:760px;margin:auto}
-.progress{color:#a88b5e;margin:20px}
-#question{font-size:24px;line-height:1.5;margin:30px auto}
-#answers{display:grid;gap:10px}
-#result{display:none;max-width:650px;margin:auto;border:1px solid #9b7844;padding:30px;background:#100e0b}
-#result h3{font-size:35px;color:#d8b77c;font-weight:normal}
-footer{border-top:1px solid #604a2c;padding:30px;text-align:center;color:#a99067;letter-spacing:2px}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--black);color:var(--cream);
+  font-family:Georgia,"Times New Roman",serif;
+}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+header{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:20px;
+  padding:20px 5%;
+  background:#080807;
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;gap:25px;align-items:center}
+.nav:last-child{justify-content:flex-end}
+.nav a{
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:1.5px;
+  white-space:nowrap;
+  transition:.2s;
+}
+.nav a:hover{color:white}
+.brand{text-align:center;white-space:nowrap}
+.brand img{
+  display:block;
+  width:75px;height:75px;
+  object-fit:contain;
+  margin:0 auto 8px;
+}
+.brand strong{
+  display:block;
+  font-size:clamp(17px,2vw,25px);
+  letter-spacing:4px;
+  font-weight:normal;
+}
+.brand span{
+  display:block;
+  color:var(--gold);
+  font-size:9px;
+  letter-spacing:5px;
+  margin-top:6px;
+}
+.hero{
+  min-height:690px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  text-align:center;
+  padding:75px 20px 95px;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.35) 45%,#080807 100%),
+    url('file_00000000b31082109ef742d985d17fc4.png') center 35%/cover no-repeat;
+}
+.hero-content{max-width:950px}
+.eyebrow{
+  color:var(--gold);
+  letter-spacing:5px;
+  font-size:12px;
+  margin-bottom:22px;
+}
+h1{
+  font-size:clamp(37px,7vw,76px);
+  line-height:1.12;
+  font-weight:normal;
+  letter-spacing:2px;
+  margin:0 0 22px;
+  text-shadow:0 3px 20px #000;
+}
+.hero p{
+  font-size:clamp(13px,2vw,18px);
+  letter-spacing:3px;
+  line-height:1.8;
+}
+.primary{
+  display:inline-block;
+  margin-top:24px;
+  padding:17px 32px;
+  background:var(--gold);
+  color:#100d08;
+  border:1px solid var(--gold-light);
+  font-size:13px;
+  letter-spacing:2px;
+  transition:.2s;
+}
+.primary:hover{background:var(--gold-light)}
+section{padding:85px 6%;scroll-margin-top:20px}
+.section-head{
+  text-align:center;
+  max-width:780px;
+  margin:0 auto 45px;
+}
+.kicker{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:4px;
+}
+h2{
+  color:var(--gold);
+  font-size:clamp(29px,4vw,43px);
+  font-weight:normal;
+  letter-spacing:3px;
+  margin:15px 0 20px;
+}
+.intro{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.9;
+  max-width:740px;
+  margin:0 auto;
+}
+.rule{
+  height:1px;width:85px;
+  background:var(--gold);
+  margin:28px auto;
+}
+#quiz-start{
+  background:linear-gradient(180deg,#100e0b,#090807);
+}
+.gender-choice{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  max-width:760px;
+  margin:35px auto;
+}
+.choice{
+  background:var(--panel);
+  border:1px solid var(--line);
+  color:var(--cream);
+  padding:27px 15px;
+  font-size:17px;
+  letter-spacing:3px;
+  transition:.2s;
+}
+.choice:hover,.answer:hover{
+  background:#261e13;
+  border-color:var(--gold);
+}
+#quiz{
+  display:none;
+  max-width:760px;
+  margin:35px auto;
+  padding:35px;
+  border:1px solid var(--line);
+  background:var(--panel);
+}
+.progress{
+  color:var(--gold);
+  text-align:center;
+  font-size:12px;
+  letter-spacing:3px;
+}
+.progress-track{
+  height:2px;
+  background:#302719;
+  margin:18px 0 30px;
+}
+.progress-fill{
+  height:2px;
+  width:0;
+  background:var(--gold);
+  transition:.25s;
+}
+#question{
+  font-size:clamp(21px,3vw,28px);
+  line-height:1.5;
+  text-align:center;
+  margin:20px 0 30px;
+}
+#answers{display:grid;gap:11px}
+.answer{
+  width:100%;
+  padding:17px 20px;
+  background:#0b0a08;
+  border:1px solid #493a25;
+  color:var(--cream);
+  font-size:15px;
+  text-align:left;
+  transition:.2s;
+}
+.quiz-actions{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:25px;
+}
+.secondary{
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--gold);
+  padding:12px 18px;
+  font-size:12px;
+  letter-spacing:1px;
+}
+#result{
+  display:none;
+  max-width:760px;
+  margin:35px auto;
+  padding:40px 25px;
+  text-align:center;
+  border:1px solid var(--gold);
+  background:#100e0b;
+}
+.result-label{
+  color:var(--gold);
+  letter-spacing:4px;
+  font-size:11px;
+}
+#result h3{
+  color:var(--gold-light);
+  font-size:clamp(26px,5vw,41px);
+  font-weight:normal;
+  letter-spacing:2px;
+}
+.result-copy{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.8;
+}
+.alternative{
+  border-top:1px solid var(--line);
+  margin-top:28px;
+  padding-top:22px;
+}
+.collection-title{
+  text-align:center;
+  color:var(--gold);
+  font-size:19px;
+  letter-spacing:4px;
+  margin:50px 0 20px;
+}
+.collection-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:15px;
+  max-width:1100px;
+  margin:0 auto;
+}
+.scent-card{
+  min-height:190px;
+  padding:27px 16px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:linear-gradient(145deg,#19140e,#0b0a08);
+  border:1px solid #4d3a22;
+  transition:.2s;
+}
+.scent-card:hover{
+  border-color:var(--gold);
+  transform:translateY(-3px);
+}
+.scent-card small{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:3px;
+}
+.scent-card h3{
+  color:var(--cream);
+  font-size:19px;
+  line-height:1.4;
+  font-weight:normal;
+}
+.scent-card p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+}
+#filozofia{
+  text-align:center;
+  background:linear-gradient(180deg,#100e0b,#080807);
+}
+.philosophy-text{
+  max-width:780px;
+  margin:auto;
+  color:#d4c5ac;
+  font-size:clamp(17px,2.4vw,22px);
+  line-height:2;
+}
+.philosophy-text strong{
+  color:var(--gold);
+  font-weight:normal;
+}
+footer{
+  border-top:1px solid var(--line);
+  padding:40px 20px;
+  text-align:center;
+}
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  flex-wrap:wrap;
+  margin:25px 0;
+}
+.footer-links a{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:2px;
+}
+footer p{
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:1px;
+}
+@media(max-width:760px){
+  header{
+    grid-template-columns:1fr;
+    gap:15px;
+    padding:17px 10px;
+  }
+  .brand{grid-row:1}
+  .brand img{width:62px;height:62px}
+  .nav,.nav:last-child{
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px 19px;
+  }
+  .nav a{font-size:10px}
+  .hero{
+    min-height:590px;
+    padding:65px 17px 75px;
+    background-position:center;
+  }
+  section{padding:65px 17px}
+  .gender-choice{grid-template-columns:1fr}
+  #quiz{padding:24px 16px}
+  .collection-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .scent-card{padding:21px 9px;min-height:170px}
+  .scent-card h3{font-size:15px}
+}
+@media(max-width:390px){
+  .collection-grid{grid-template-columns:1fr}
+  .nav{gap:10px 14px}
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<a href="#kolekcja">DLA NIEGO</a>
-<a href="#kolekcja">DLA NIEJ</a>
-<div class="logo">CODEX UMBRAE<small>WEAR YOUR STORY</small></div>
-<a href="#quiz-start">FIND YOUR SCENT</a>
-<a href="#filozofia">NASZA FILOZOFIA</a>
+  <nav class="nav">
+    <a href="#meskie">DLA NIEGO</a>
+    <a href="#damskie">DLA NIEJ</a>
+  </nav>
+
+  <a class="brand" href="#top">
+    <img src="image_dfb5d0f9.jpg" alt="Godło CODEX UMBRAE">
+    <strong>CODEX UMBRAE</strong>
+    <span>WEAR YOUR STORY</span>
+  </a>
+
+  <nav class="nav">
+    <a href="#quiz-start">FIND YOUR SCENT</a>
+    <a href="#filozofia">NASZA FILOZOFIA</a>
+  </nav>
 </header>
 
+<main id="top">
+
 <div class="hero">
-<div class="hero-content">
-<h1>KAŻDY ZAPACH MA SWOJĄ HISTORIĘ</h1>
-<p class="subtitle">ODKRYJ HISTORIĘ, KTÓRA PASUJE DO CIEBIE</p>
-<button onclick="document.getElementById('quiz-start').scrollIntoView({behavior:'smooth'})">ODKRYJ SWÓJ ZAPACH</button>
-</div>
+  <div class="hero-content">
+    <div class="eyebrow">CODEX UMBRAE · LIBER I</div>
+    <h1>KAŻDY ZAPACH MA SWOJĄ HISTORIĘ</h1>
+    <p>ODKRYJ HISTORIĘ, KTÓRA PASUJE DO CIEBIE</p>
+    <a class="primary" href="#quiz-start">ODKRYJ SWÓJ ZAPACH</a>
+  </div>
 </div>
 
 <section id="quiz-start">
-<h2 class="gold">FIND YOUR SCENT</h2>
-<p class="intro">Nie wybieraj zapachu przypadkowo. Odpowiedz na sześć pytań i odkryj kompozycję dopasowaną do Twojego charakteru.</p>
-<div id="gender">
-<button class="choice" onclick="startQuiz('male')">DLA NIEGO</button>
-<button class="choice" onclick="startQuiz('female')">DLA NIEJ</button>
-</div>
+  <div class="section-head">
+    <div class="kicker">POZNAJ SIEBIE. ODKRYJ SWÓJ ZAPACH.</div>
+    <h2>FIND YOUR SCENT</h2>
+    <p class="intro">
+      Nie wybieraj zapachu przypadkowo. Odpowiedz na sześć pytań
+      i odkryj kompozycję, której historia może być bliska Twojej.
+    </p>
+  </div>
 
-<div id="quiz">
-<div class="progress" id="progress"></div>
-<div id="question"></div>
-<div id="answers"></div>
-</div>
+  <div id="gender" class="gender-choice">
+    <button class="choice" onclick="startQuiz('male')">DLA NIEGO</button>
+    <button class="choice" onclick="startQuiz('female')">DLA NIEJ</button>
+  </div>
 
-<div id="result">
-<p class="gold">TWÓJ ZAPACH</p>
-<h3 id="resultName"></h3>
-<p id="resultText"></p>
-<p class="gold" id="alternative"></p>
-<button onclick="restartQuiz()">ROZWIĄŻ PONOWNIE</button>
-</div>
+  <div id="quiz">
+    <div class="progress" id="progress"></div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div id="question"></div>
+    <div id="answers"></div>
+    <div class="quiz-actions">
+      <button class="secondary" onclick="previousQuestion()">WRÓĆ</button>
+      <button class="secondary" onclick="restartQuiz()">OD NOWA</button>
+    </div>
+  </div>
+
+  <div id="result">
+    <div class="result-label">TWOJA HISTORIA · TWÓJ ZAPACH</div>
+    <h3 id="resultName"></h3>
+    <p class="result-copy" id="resultText"></p>
+    <div class="alternative">
+      <div class="result-label">DRUGA PROPOZYCJA</div>
+      <h3 id="alternativeName"></h3>
+      <p class="result-copy" id="alternativeText"></p>
+    </div>
+    <button class="primary" onclick="restartQuiz()">ODKRYJ INNY ZAPACH</button>
+  </div>
 </section>
 
 <section id="kolekcja">
-<h2 class="gold">LIBER I: INITIUM</h2>
-<p class="intro">12 zapachów. 12 historii. 12 znaczeń.</p>
-<p>Dla niego · Dla niej</p>
+  <div class="section-head">
+    <div class="kicker">LIBER I</div>
+    <h2>INITIUM</h2>
+    <p class="intro">12 zapachów. 12 historii. 12 znaczeń.</p>
+    <div class="rule"></div>
+  </div>
+
+  <div class="collection-title" id="meskie">DLA NIEGO</div>
+  <div class="collection-grid" id="maleCollection"></div>
+
+  <div class="collection-title" id="damskie">DLA NIEJ</div>
+  <div class="collection-grid" id="femaleCollection"></div>
 </section>
 
 <section id="filozofia">
-<h2 class="gold">WEAR YOUR STORY</h2>
-<p class="intro">Każdy człowiek ma własną historię. Własne zasady, tajemnice, doświadczenia i wspomnienia. Każdy zapach CODEX UMBRAE jest częścią tej opowieści.</p>
+  <div class="kicker">WEAR YOUR STORY</div>
+  <h2>NASZA FILOZOFIA</h2>
+  <div class="rule"></div>
+  <p class="philosophy-text">
+    Każdy człowiek ma własną historię.
+    Własne zasady, tajemnice, doświadczenia i wspomnienia.
+    <br><br>
+    Nie tylko ją opowiadaj.
+    <strong>Noś ją ze sobą.</strong>
+    <br><br>
+    Każda historia ma swój zapach.
+    Każdy zapach ma swoją historię.
+  </p>
 </section>
 
-<footer>CODEX UMBRAE · WEAR YOUR STORY</footer>
+</main>
+
+<footer>
+  <div class="brand">
+    <strong>CODEX UMBRAE</strong>
+    <span>WEAR YOUR STORY</span>
+  </div>
+  <div class="footer-links">
+    <a href="#meskie">DLA NIEGO</a>
+    <a href="#damskie">DLA NIEJ</a>
+    <a href="#quiz-start">FIND YOUR SCENT</a>
+    <a href="#filozofia">FILOZOFIA</a>
+  </div>
+  <p>LIBER I: INITIUM</p>
+  <p>© CODEX UMBRAE</p>
+</footer>
 
 <script>
 const data={
@@ -109,67 +505,149 @@ female:[
 
 const scents={
 male:[
-["OMERTA","Lojalność, honor i skórzana elegancja.","CAVE CUI FIDAS"],
-["CAVE CUI FIDAS","Ostrożność, tajemnica i głęboki charakter.","OMERTA"],
-["FORTES FORTUNA IUVAT","Odwaga, energia i zdecydowanie.","CARPE DIEM"],
-["PER ASPERA AD ASTRA","Wytrwałość, siła i spokój.","OMERTA"],
-["MEMENTO VIVERE","Radość życia i swoboda.","CARPE DIEM"],
-["CARPE DIEM","Działanie, spontaniczność i energia.","FORTES FORTUNA IUVAT"]
+["OMERTA","Lojalność, honor i skórzana elegancja."],
+["CAVE CUI FIDAS","Ostrożność, tajemnica i głęboki charakter."],
+["FORTES FORTUNA IUVAT","Odwaga, energia i zdecydowanie."],
+["PER ASPERA AD ASTRA","Wytrwałość, siła i spokój."],
+["MEMENTO VIVERE","Radość życia i swoboda."],
+["CARPE DIEM","Działanie, spontaniczność i energia."]
 ],
 female:[
-["FEMME FATALE","Niezależność, pewność siebie i tajemnica.","VENENUM"],
-["REGINA NOCTIS","Godność, siła i elegancja.","FEMME FATALE"],
-["VENENUM","Pokusa, tajemnica i wyrazisty charakter.","REGINA NOCTIS"],
-["MALA FIDE","Ostrożność, prawda i granice zaufania.","MEA CULPA"],
-["AMOR FATI","Miłość, bliskość, ciepło i umiejętność wybaczania.","MEA CULPA"],
-["MEA CULPA","Szczerość, odpowiedzialność i wrażliwość.","AMOR FATI"]
+["FEMME FATALE","Niezależność, pewność siebie i tajemnica."],
+["REGINA NOCTIS","Godność, siła i elegancja."],
+["VENENUM","Pokusa, tajemnica i wyrazisty charakter."],
+["MALA FIDE","Ostrożność, prawda i granice zaufania."],
+["AMOR FATI","Miłość, bliskość, ciepło i umiejętność wybaczania."],
+["MEA CULPA","Szczerość, odpowiedzialność i wrażliwość."]
 ]
 };
 
-let gender="",step=0,answers=[];
+/* Wstępna punktacja. Każda odpowiedź ma przypisany profil.
+   Wyniki wymagają testów z rzeczywistymi profilami kompozycji. */
+const scoring={
+male:[
+[0,5,2,3,1],
+[3,0,2,1],
+[3,2,1,5,4],
+[0,2,1,5,3],
+[0,2,2,3,1],
+[0,1,2,3,2]
+],
+female:[
+[4,0,1,3,5],
+[3,0,2,1,4],
+[2,0,3,4,1],
+[2,0,4,3,1],
+[3,1,0,3,2],
+[0,1,2,3,4]
+]
+};
+
+let gender="";
+let step=0;
+let answers=[];
+
 function startQuiz(type){
-gender=type;step=0;answers=[];
-document.getElementById("gender").style.display="none";
-document.getElementById("result").style.display="none";
-document.getElementById("quiz").style.display="block";
-showQuestion();
+ gender=type;
+ step=0;
+ answers=[];
+ document.getElementById("gender").style.display="none";
+ document.getElementById("result").style.display="none";
+ document.getElementById("quiz").style.display="block";
+ showQuestion();
+ document.getElementById("quiz").scrollIntoView({behavior:"smooth",block:"center"});
 }
+
 function showQuestion(){
-const q=data[gender][step];
-document.getElementById("progress").textContent="PYTANIE "+(step+1)+" / 6";
-document.getElementById("question").textContent=q[0];
-const area=document.getElementById("answers");
-area.innerHTML="";
-q[1].forEach((answer,index)=>{
-const b=document.createElement("button");
-b.className="answer";b.textContent=answer;
-b.onclick=()=>choose(index);
-area.appendChild(b);
-});
+ const q=data[gender][step];
+ document.getElementById("progress").textContent="PYTANIE "+(step+1)+" / 6";
+ document.getElementById("progressFill").style.width=((step+1)/6*100)+"%";
+ document.getElementById("question").textContent=q[0];
+
+ const area=document.getElementById("answers");
+ area.innerHTML="";
+ q[1].forEach((answer,index)=>{
+  const b=document.createElement("button");
+  b.className="answer";
+  b.textContent=answer;
+  b.onclick=()=>choose(index);
+  area.appendChild(b);
+ });
 }
+
 function choose(index){
-answers.push(index);
-step++;
-if(step<6)showQuestion();else showResult();
+ answers[step]=index;
+ if(step<5){
+  step++;
+  showQuestion();
+ }else{
+  showResult();
+ }
 }
+
+function previousQuestion(){
+ if(step>0){
+  step--;
+  showQuestion();
+ }
+}
+
 function showResult(){
-document.getElementById("quiz").style.display="none";
-const weights=gender==="male"
-?[[0,1,3,3,2],[1,0,3,1,2],[2,5,4,3,5],[0,3,1,2,1],[0,1,2,3,1],[0,1,2,3,4]]
-:[[5,2,1,3,1],[2,1,3,3,4],[1,0,2,3,4],[2,0,4,2,3],[4,0,3,2,3],[3,4,2,3,1]];
-const scores=Array(6).fill(0);
-answers.forEach((a,i)=>{scores[weights[i][a]]+=1});
-const best=scores.indexOf(Math.max(...scores));
-const result=scents[gender][best];
-document.getElementById("resultName").textContent=result[0];
-document.getElementById("resultText").textContent=result[1];
-document.getElementById("alternative").textContent="ALTERNATYWA: "+result[2];
-document.getElementById("result").style.display="block";
+ document.getElementById("quiz").style.display="none";
+ const scores=Array(6).fill(0);
+
+ answers.forEach((answer,question)=>{
+  const scentIndex=scoring[gender][question][answer];
+  scores[scentIndex]+=1;
+ });
+
+ const ranking=scores
+  .map((score,index)=>({score,index}))
+  .sort((a,b)=>b.score-a.score || a.index-b.index);
+
+ const first=scents[gender][ranking[0].index];
+ const second=scents[gender][ranking[1].index];
+
+ document.getElementById("resultName").textContent=first[0];
+ document.getElementById("resultText").textContent=first[1];
+ document.getElementById("alternativeName").textContent=second[0];
+ document.getElementById("alternativeText").textContent=second[1];
+ document.getElementById("result").style.display="block";
+ document.getElementById("result").scrollIntoView({behavior:"smooth",block:"center"});
 }
+
 function restartQuiz(){
-document.getElementById("result").style.display="none";
-document.getElementById("gender").style.display="block";
+ step=0;
+ answers=[];
+ document.getElementById("quiz").style.display="none";
+ document.getElementById("result").style.display="none";
+ document.getElementById("gender").style.display="grid";
+ document.getElementById("quiz-start").scrollIntoView({behavior:"smooth"});
 }
+
+function renderCollection(type,target){
+ const area=document.getElementById(target);
+ scents[type].forEach((scent,index)=>{
+  const card=document.createElement("article");
+  card.className="scent-card";
+
+  const number=document.createElement("small");
+  number.textContent="INITIUM · "+String(index+1).padStart(2,"0");
+
+  const title=document.createElement("h3");
+  title.textContent=scent[0];
+
+  const description=document.createElement("p");
+  description.textContent=scent[1];
+
+  card.append(number,title,description);
+  area.appendChild(card);
+ });
+}
+
+renderCollection("male","maleCollection");
+renderCollection("female","femaleCollection");
 </script>
+
 </body>
 </html>
