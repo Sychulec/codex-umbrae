@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -9,372 +8,359 @@
 
 <style>
 :root {
-  --black: #080706;
-  --gold: #c6a269;
-  --light-gold: #ead5a9;
-  --muted: #b9aa91;
-  --line: #725632;
-  --panel: #100e0b;
+  --black:#080706;
+  --gold:#c6a269;
+  --light:#ead5a9;
+  --muted:#b9aa91;
+  --line:#725632;
+  --panel:#100e0b;
 }
 
-* { box-sizing: border-box; }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--black);
+  color:var(--light);
+  font-family:Georgia,serif;
+}
+a{color:inherit}
 
-html {
-  scroll-behavior: smooth;
+/* NAGŁÓWEK */
+
+header{
+  min-height:145px;
+  padding:12px 4%;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:20px;
+  background:#080706;
+  border-bottom:1px solid var(--line);
 }
 
-body {
-  margin: 0;
-  background: var(--black);
-  color: var(--light-gold);
-  font-family: Georgia, serif;
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  gap:18px;
 }
 
-a { color: inherit; }
-
-/* HEADER */
-
-header {
-  min-height: 175px;
-  padding: 12px 4%;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 25px;
-  background: #080706;
-  border-bottom: 1px solid var(--line);
+header a{
+  color:#d5b77e;
+  text-decoration:none;
+  font-size:13px;
+  letter-spacing:2px;
+  white-space:nowrap;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 20px;
+header a:hover{color:white}
+
+.brand img{
+  display:block;
+  width:230px;
+  max-width:28vw;
+  height:110px;
+  object-fit:contain;
+  margin:auto;
 }
 
-header a {
-  color: #d5b77e;
-  text-decoration: none;
-  font-size: 14px;
-  letter-spacing: 2px;
-  white-space: nowrap;
-  transition: color .25s;
+/* GŁÓWNE ZDJĘCIE */
+
+.hero{
+  min-height:690px;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  text-align:center;
+  padding:65px 20px;
+  overflow:hidden;
+  background:#080706;
 }
 
-header a:hover { color: white; }
-
-.brand {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.brand img {
-  display: block;
-  width: 300px;
-  max-width: 32vw;
-  height: 145px;
-  object-fit: contain;
-  object-position: center;
-}
-
-/* HERO */
-
-.hero {
-  min-height: 720px;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  text-align: center;
-  padding: 70px 20px;
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.08),
-      rgba(0,0,0,.25) 45%,
-      rgba(0,0,0,.88)
+      rgba(0,0,0,.25),
+      rgba(0,0,0,.35) 45%,
+      rgba(0,0,0,.92)
     ),
     url('file_00000000c80482108f0d30fc73add0ce.png')
-    center 35% / cover no-repeat;
+    center 38% / cover no-repeat;
+  opacity:.62;
+  transform:scale(.98);
 }
 
-.hero-content {
-  max-width: 1050px;
-  position: relative;
+.hero-content{
+  position:relative;
+  z-index:1;
+  max-width:950px;
 }
 
-.eyebrow {
-  color: var(--gold);
-  font-size: 14px;
-  letter-spacing: 6px;
+.eyebrow{
+  color:var(--gold);
+  font-size:13px;
+  letter-spacing:6px;
 }
 
-h1 {
-  font-size: clamp(38px, 6vw, 76px);
-  font-weight: normal;
-  line-height: 1.15;
-  letter-spacing: 3px;
-  text-shadow: 0 3px 20px #000;
-  margin: 25px 0;
+h1{
+  font-size:clamp(38px,6vw,72px);
+  font-weight:normal;
+  line-height:1.15;
+  letter-spacing:3px;
+  text-shadow:0 3px 20px #000;
+  margin:25px 0;
 }
 
-.subtitle {
-  font-size: 17px;
-  line-height: 1.8;
-  letter-spacing: 3px;
-  text-shadow: 0 2px 10px #000;
+.subtitle{
+  font-size:16px;
+  line-height:1.8;
+  letter-spacing:3px;
+  text-shadow:0 2px 10px #000;
 }
 
-button {
-  background: linear-gradient(135deg, #d1ad70, #a47b40);
-  color: #100e0a;
-  border: 1px solid #ead09a;
-  padding: 17px 30px;
-  font-family: Georgia, serif;
-  font-size: 15px;
-  letter-spacing: 2px;
-  cursor: pointer;
-  transition: .25s;
+button{
+  background:linear-gradient(135deg,#d1ad70,#a47b40);
+  color:#100e0a;
+  border:1px solid #ead09a;
+  padding:17px 30px;
+  font-family:Georgia,serif;
+  font-size:15px;
+  letter-spacing:2px;
+  cursor:pointer;
+  transition:.25s;
 }
 
-button:hover {
-  background: #ead09a;
-  transform: translateY(-2px);
+button:hover{
+  background:#ead09a;
+  transform:translateY(-2px);
 }
 
-/* SECTIONS */
+/* SEKCJE */
 
-section {
-  padding: 85px 20px;
-  text-align: center;
+section{
+  padding:75px 20px;
+  text-align:center;
 }
 
-h2 {
-  font-size: 37px;
-  font-weight: normal;
-  letter-spacing: 4px;
+h2{
+  font-size:36px;
+  font-weight:normal;
+  letter-spacing:4px;
 }
 
-.gold { color: var(--gold); }
+.gold{color:var(--gold)}
 
-.intro {
-  max-width: 760px;
-  margin: 25px auto 40px;
-  color: #c9c0b0;
-  font-size: 17px;
-  line-height: 1.9;
+.intro{
+  max-width:760px;
+  margin:25px auto 40px;
+  color:#c9c0b0;
+  font-size:17px;
+  line-height:1.9;
 }
 
 /* QUIZ */
 
-#quiz {
-  display: none;
-  max-width: 760px;
-  margin: 35px auto;
+#quiz{
+  display:none;
+  max-width:760px;
+  margin:35px auto;
 }
 
-.choice, .answer {
-  display: block;
-  width: 100%;
-  max-width: 560px;
-  margin: 12px auto;
-  padding: 21px;
-  background: var(--panel);
-  color: var(--light-gold);
-  border: 1px solid var(--line);
-  font-family: Georgia, serif;
-  font-size: 16px;
-  letter-spacing: 1px;
-  cursor: pointer;
+.choice,.answer{
+  display:block;
+  width:100%;
+  max-width:560px;
+  margin:12px auto;
+  padding:20px;
+  background:var(--panel);
+  color:var(--light);
+  border:1px solid var(--line);
+  font-family:Georgia,serif;
+  font-size:16px;
+  letter-spacing:1px;
 }
 
-.choice:hover, .answer:hover {
-  background: #282016;
+.choice:hover,.answer:hover{background:#282016}
+
+.progress{
+  margin:25px;
+  color:var(--gold);
+  letter-spacing:3px;
 }
 
-.progress {
-  margin: 25px;
-  color: var(--gold);
-  letter-spacing: 3px;
+#question{
+  font-size:24px;
+  line-height:1.5;
+  margin:30px auto;
 }
 
-#question {
-  font-size: 25px;
-  line-height: 1.5;
-  margin: 30px auto;
+#answers{display:grid;gap:8px}
+
+#result{
+  display:none;
+  max-width:700px;
+  margin:35px auto;
+  padding:35px 25px;
+  background:var(--panel);
+  border:1px solid var(--gold);
 }
 
-#answers {
-  display: grid;
-  gap: 8px;
+#result h3{
+  color:var(--light);
+  font-size:35px;
+  font-weight:normal;
+  letter-spacing:2px;
 }
 
-#result {
-  display: none;
-  max-width: 700px;
-  margin: 35px auto;
-  padding: 40px 25px;
-  background: var(--panel);
-  border: 1px solid var(--gold);
+.result-label{
+  color:var(--gold);
+  letter-spacing:4px;
 }
 
-#result h3 {
-  color: var(--light-gold);
-  font-size: 36px;
-  font-weight: normal;
-  letter-spacing: 2px;
+#resultText{
+  color:#d1c5b1;
+  line-height:1.9;
 }
 
-.result-label {
-  color: var(--gold);
-  letter-spacing: 4px;
+#alternative{
+  color:var(--gold);
+  letter-spacing:1px;
 }
 
-#resultText {
-  color: #d1c5b1;
-  line-height: 1.9;
+/* KOLEKCJA */
+
+.collection{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  max-width:1100px;
+  margin:40px auto 60px;
 }
 
-#alternative {
-  color: var(--gold);
-  letter-spacing: 1px;
+.scent{
+  min-height:145px;
+  padding:28px 16px;
+  background:linear-gradient(145deg,#15120e,#0c0b09);
+  border:1px solid #594329;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  transition:.25s;
 }
 
-/* COLLECTION */
-
-.collection {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  max-width: 1100px;
-  margin: 40px auto 65px;
+.scent:hover{
+  border-color:var(--gold);
+  transform:translateY(-3px);
 }
 
-.scent {
-  min-height: 150px;
-  padding: 30px 18px;
-  background: linear-gradient(145deg, #15120e, #0c0b09);
-  border: 1px solid #594329;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transition: .25s;
+.scent strong{
+  color:var(--light);
+  font-size:17px;
+  letter-spacing:2px;
 }
 
-.scent:hover {
-  border-color: var(--gold);
-  transform: translateY(-4px);
+.scent small{
+  display:block;
+  margin-top:12px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
 }
 
-.scent strong {
-  color: var(--light-gold);
-  font-size: 18px;
-  letter-spacing: 2px;
-}
+/* FILOZOFIA */
 
-.scent small {
-  display: block;
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-/* PHILOSOPHY */
-
-.philosophy {
+.philosophy{
   background:
-    linear-gradient(rgba(0,0,0,.85), rgba(0,0,0,.95)),
-    url('image_dfb5d0f9.jpg') center / cover;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+    linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.96)),
+    url('image_dfb5d0f9.jpg') center/cover;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
 }
 
-/* FOOTER */
+/* STOPKA */
 
-footer {
-  padding: 40px 20px;
-  text-align: center;
-  color: var(--gold);
-  letter-spacing: 3px;
-  line-height: 2;
+footer{
+  padding:40px 20px;
+  text-align:center;
+  color:var(--gold);
+  letter-spacing:3px;
+  line-height:2;
 }
 
-/* MOBILE */
+/* TELEFONY */
 
-@media (max-width: 760px) {
-  header {
-    grid-template-columns: 1fr;
-    gap: 5px;
-    padding: 10px 8px 18px;
+@media(max-width:760px){
+  header{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:12px 8px 18px;
   }
 
-  .brand { grid-row: 1; }
+  .brand{grid-row:1}
 
-  .brand img {
-    width: 270px;
-    max-width: 85vw;
-    height: 135px;
+  .brand img{
+    width:240px;
+    max-width:75vw;
+    height:105px;
   }
 
-  .nav {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px 25px;
+  .nav{
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px 22px;
   }
 
-  header a {
-    font-size: 11px;
-    letter-spacing: 1.3px;
+  header a{
+    font-size:11px;
+    letter-spacing:1.3px;
   }
 
-  .hero {
-    min-height: 590px;
-    padding: 45px 15px;
-    background-position: center;
+  .hero{
+    min-height:610px;
+    padding:45px 15px;
   }
 
-  h1 {
-    font-size: clamp(34px, 9vw, 48px);
-    letter-spacing: 1px;
+  .hero::before{
+    background-position:center center;
+    opacity:.52;
   }
 
-  .subtitle {
-    font-size: 13px;
-    letter-spacing: 2px;
+  h1{
+    font-size:clamp(34px,8vw,48px);
+    letter-spacing:1px;
   }
 
-  section { padding: 60px 15px; }
-
-  h2 {
-    font-size: 29px;
-    letter-spacing: 2px;
+  .subtitle{
+    font-size:13px;
+    letter-spacing:2px;
   }
 
-  .collection {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+  section{padding:58px 15px}
+
+  h2{
+    font-size:28px;
+    letter-spacing:2px;
   }
 
-  .scent {
-    padding: 22px 10px;
-    min-height: 135px;
+  .collection{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
   }
 
-  .scent strong {
-    font-size: 15px;
-  }
-
-  .scent small {
-    font-size: 12px;
-  }
-
-  #question { font-size: 21px; }
+  .scent{padding:20px 9px}
+  .scent strong{font-size:14px}
+  .scent small{font-size:12px}
+  #question{font-size:21px}
 }
 
-@media (max-width: 390px) {
-  .collection { grid-template-columns: 1fr; }
+@media(max-width:390px){
+  .collection{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -401,9 +387,7 @@ footer {
   <div class="hero-content">
     <p class="eyebrow">CODEX UMBRAE · LIBER I</p>
     <h1>KAŻDY ZAPACH MA SWOJĄ HISTORIĘ</h1>
-    <p class="subtitle">
-      ODKRYJ HISTORIĘ, KTÓRA PASUJE DO CIEBIE
-    </p>
+    <p class="subtitle">ODKRYJ HISTORIĘ, KTÓRA PASUJE DO CIEBIE</p>
     <button onclick="document.getElementById('quiz-start').scrollIntoView({behavior:'smooth'})">
       ODKRYJ SWÓJ ZAPACH
     </button>
@@ -460,13 +444,11 @@ footer {
   </p>
 </section>
 
-<footer>
-  CODEX UMBRAE · WEAR YOUR STORY
-</footer>
+<footer>CODEX UMBRAE · WEAR YOUR STORY</footer>
 
 <script>
-const data = {
-male: [
+const data={
+male:[
 ["Co jest dla Ciebie najważniejsze?",["Lojalność i honor","Wolność i niezależność","Odwaga i działanie","Spokój i wewnętrzna siła","Prawda i zaufanie"]],
 ["Jak reagujesz, gdy ktoś Cię zawiedzie?",["Daję drugą szansę, ale pamiętam","Odcinam tę osobę bez zbędnych słów","Konfrontuję ją i chcę wyjaśnień","Zachowuję spokój i obserwuję"]],
 ["Jaki jesteś na co dzień?",["Spokojny, ale stanowczy","Energiczny i zdecydowany","Tajemniczy i zdystansowany","Towarzyski i spontaniczny","Zależy od sytuacji"]],
@@ -474,7 +456,7 @@ male: [
 ["Co najbardziej Cię odpycha?",["Zdrada i fałsz","Pycha i przechwalanie się","Brak odwagi","Brak szacunku","Zakłamanie i dwulicowość"]],
 ["Jaki klimat zapachu najbardziej Ci pasuje?",["Skórzany, głęboki i elegancki","Orientalny, ciepły i intensywny","Świeży, morski i ambrowy","Drzewny, spokojny i tajemniczy","Przyprawowy i wyrazisty"]]
 ],
-female: [
+female:[
 ["Co jest dla Ciebie najważniejsze?",["Miłość i bliskość","Niezależność i wolność","Szacunek i godność","Lojalność i zaufanie","Siła i pewność siebie"]],
 ["Jak reagujesz, gdy ktoś Cię zrani?",["Wybaczam, ale pamiętam","Odcinam się i idę dalej","Próbuję wszystko wyjaśnić","Ukrywam emocje i zachowuję spokój","Daję drugą szansę, jeśli ktoś na nią zasłuży"]],
 ["Jaka jesteś na co dzień?",["Delikatna i spokojna","Energiczna i spontaniczna","Tajemnicza i zdystansowana","Silna i zdecydowana","Zmienna, zależnie od sytuacji"]],
@@ -484,8 +466,8 @@ female: [
 ]
 };
 
-const scents = {
-male: [
+const scents={
+male:[
 ["OMERTA","Lojalność, honor i skórzana elegancja.","CAVE CUI FIDAS"],
 ["CAVE CUI FIDAS","Ostrożność, tajemnica i głęboki charakter.","OMERTA"],
 ["FORTES FORTUNA IUVAT","Odwaga, energia i zdecydowanie.","CARPE DIEM"],
@@ -493,7 +475,7 @@ male: [
 ["MEMENTO VIVERE","Radość życia i swoboda.","CARPE DIEM"],
 ["CARPE DIEM","Działanie, spontaniczność i energia.","FORTES FORTUNA IUVAT"]
 ],
-female: [
+female:[
 ["FEMME FATALE","Niezależność, pewność siebie i tajemnica.","VENENUM"],
 ["REGINA NOCTIS","Godność, siła i elegancja.","FEMME FATALE"],
 ["VENENUM","Pokusa, tajemnica i wyrazisty charakter.","REGINA NOCTIS"],
@@ -503,8 +485,8 @@ female: [
 ]
 };
 
-const mapping = {
-male: [
+const mapping={
+male:[
 [0,4,2,3,1],
 [4,0,2,3],
 [3,2,1,5,4],
@@ -512,7 +494,7 @@ male: [
 [0,1,2,3,1],
 [0,1,4,3,2]
 ],
-female: [
+female:[
 [4,0,1,5,2],
 [4,0,5,1,4],
 [1,0,2,3,4],
@@ -522,98 +504,86 @@ female: [
 ]
 };
 
-let gender = "";
-let step = 0;
-let answers = [];
+let gender="",step=0,answers=[];
 
-function startQuiz(type) {
-  gender = type;
-  step = 0;
-  answers = [];
-
-  document.getElementById("gender").style.display = "none";
-  document.getElementById("result").style.display = "none";
-  document.getElementById("quiz").style.display = "block";
-
+function startQuiz(type){
+  gender=type;
+  step=0;
+  answers=[];
+  document.getElementById("gender").style.display="none";
+  document.getElementById("result").style.display="none";
+  document.getElementById("quiz").style.display="block";
   showQuestion();
 }
 
-function showQuestion() {
-  const q = data[gender][step];
+function showQuestion(){
+  const q=data[gender][step];
+  document.getElementById("progress").textContent="PYTANIE "+(step+1)+" / 6";
+  document.getElementById("question").textContent=q[0];
 
-  document.getElementById("progress").textContent =
-    "PYTANIE " + (step + 1) + " / 6";
+  const area=document.getElementById("answers");
+  area.innerHTML="";
 
-  document.getElementById("question").textContent = q[0];
-
-  const area = document.getElementById("answers");
-  area.innerHTML = "";
-
-  q[1].forEach((answer, index) => {
-    const button = document.createElement("button");
-    button.className = "answer";
-    button.textContent = answer;
-    button.onclick = () => choose(index);
+  q[1].forEach((answer,index)=>{
+    const button=document.createElement("button");
+    button.className="answer";
+    button.textContent=answer;
+    button.onclick=()=>choose(index);
     area.appendChild(button);
   });
 }
 
-function choose(index) {
+function choose(index){
   answers.push(index);
   step++;
-
-  if (step < 6) {
-    showQuestion();
-  } else {
-    showResult();
-  }
+  if(step<6)showQuestion();
+  else showResult();
 }
 
-function showResult() {
-  document.getElementById("quiz").style.display = "none";
+function showResult(){
+  document.getElementById("quiz").style.display="none";
+  const scores=Array(6).fill(0);
 
-  const scores = Array(6).fill(0);
-
-  answers.forEach((answer, i) => {
-    const scentIndex = mapping[gender][i][answer];
+  answers.forEach((answer,i)=>{
+    const scentIndex=mapping[gender][i][answer];
     scores[scentIndex]++;
   });
 
-  const ranking = scores
-    .map((score, index) => ({score, index}))
-    .sort((a, b) => b.score - a.score || a.index - b.index);
+  const ranking=scores
+    .map((score,index)=>({score,index}))
+    .sort((a,b)=>b.score-a.score||a.index-b.index);
 
-  const best = ranking[0].index;
-  const second = ranking[1].index;
-  const result = scents[gender][best];
+  const best=ranking[0].index;
+  const second=ranking[1].index;
+  const result=scents[gender][best];
 
-  document.getElementById("resultName").textContent = result[0];
-  document.getElementById("resultText").textContent = result[1];
-  document.getElementById("alternative").textContent =
-    "ALTERNATYWA: " + scents[gender][second][0];
+  document.getElementById("resultName").textContent=result[0];
+  document.getElementById("resultText").textContent=result[1];
+  document.getElementById("alternative").textContent=
+    "ALTERNATYWA: "+scents[gender][second][0];
 
-  document.getElementById("result").style.display = "block";
+  document.getElementById("result").style.display="block";
   document.getElementById("result").scrollIntoView({behavior:"smooth"});
 }
 
-function restartQuiz() {
-  document.getElementById("result").style.display = "none";
-  document.getElementById("gender").style.display = "block";
+function restartQuiz(){
+  document.getElementById("result").style.display="none";
+  document.getElementById("gender").style.display="block";
   document.getElementById("quiz-start").scrollIntoView({behavior:"smooth"});
 }
 
-function fillCollection(type, id) {
-  const area = document.getElementById(id);
+function fillCollection(type,id){
+  const area=document.getElementById(id);
 
-  scents[type].forEach(scent => {
-    const card = document.createElement("div");
-    card.className = "scent";
+  scents[type].forEach(scent=>{
+    const card=document.createElement("div");
+    card.className="scent";
 
-    const name = document.createElement("strong");
-    name.textContent = scent[0];
+    const name=document.createElement("strong");
+    name.textContent=scent[0];
 
-    const description = document.createElement("small");
-    description.textContent = scent[1];
+    const description=document.createElement("small");
+    description.textContent=scent[1];
 
     card.appendChild(name);
     card.appendChild(description);
@@ -621,8 +591,8 @@ function fillCollection(type, id) {
   });
 }
 
-fillCollection("male", "maleCollection");
-fillCollection("female", "femaleCollection");
+fillCollection("male","maleCollection");
+fillCollection("female","femaleCollection");
 </script>
 
 </body>
