@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CODEX UMBRAE | Wear Your Story</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080807;color:#e8d4ad;font-family:Georgia,serif}
+header{display:flex;justify-content:space-around;align-items:center;padding:22px 12px;border-bottom:1px solid #8c6b38;gap:12px;flex-wrap:wrap}
+header a{color:#d5b77e;text-decoration:none;font-size:14px;letter-spacing:1px}
+.logo{text-align:center;font-size:25px;letter-spacing:4px;color:#e4c58c}
+.logo small{display:block;font-size:10px;letter-spacing:5px;margin-top:7px}
+.hero{min-height:650px;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.88)),url('hero.png') center 35%/cover no-repeat;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:55px 18px}
+.hero-content{max-width:850px}
+h1{font-size:clamp(34px,7vw,66px);font-weight:normal;letter-spacing:3px;text-shadow:0 2px 15px #000}
+.subtitle{font-size:19px;letter-spacing:3px}
+button{background:#b28b4e;color:#100e0a;border:1px solid #e0c38c;padding:16px 25px;font-family:Georgia,serif;font-size:17px;letter-spacing:1px;cursor:pointer}
+button:hover{background:#d0ad70}
+section{padding:65px 18px;text-align:center}
+h2{font-size:35px;font-weight:normal;letter-spacing:3px}
+.gold{color:#c6a269}
+.intro{max-width:700px;margin:20px auto 35px;line-height:1.8;color:#c9c0b0}
+.choice,.answer{background:#11100e;border:1px solid #80633a;color:#dfc28e;padding:20px;margin:10px auto;max-width:500px;width:100%;display:block}
+.choice:hover,.answer:hover{background:#282016}
+#quiz{display:none;max-width:760px;margin:auto}
+.progress{color:#a88b5e;margin:20px}
+#question{font-size:24px;line-height:1.5;margin:30px auto}
+#answers{display:grid;gap:10px}
+#result{display:none;max-width:650px;margin:auto;border:1px solid #9b7844;padding:30px;background:#100e0b}
+#result h3{font-size:35px;color:#d8b77c;font-weight:normal}
+footer{border-top:1px solid #604a2c;padding:30px;text-align:center;color:#a99067;letter-spacing:2px}
+</style>
+</head>
+<body>
+
+<header>
+<a href="#kolekcja">DLA NIEGO</a>
+<a href="#kolekcja">DLA NIEJ</a>
+<div class="logo">CODEX UMBRAE<small>WEAR YOUR STORY</small></div>
+<a href="#quiz-start">FIND YOUR SCENT</a>
+<a href="#filozofia">NASZA FILOZOFIA</a>
+</header>
+
+<div class="hero">
+<div class="hero-content">
+<h1>KAŻDY ZAPACH MA SWOJĄ HISTORIĘ</h1>
+<p class="subtitle">ODKRYJ HISTORIĘ, KTÓRA PASUJE DO CIEBIE</p>
+<button onclick="document.getElementById('quiz-start').scrollIntoView({behavior:'smooth'})">ODKRYJ SWÓJ ZAPACH</button>
+</div>
+</div>
+
+<section id="quiz-start">
+<h2 class="gold">FIND YOUR SCENT</h2>
+<p class="intro">Nie wybieraj zapachu przypadkowo. Odpowiedz na sześć pytań i odkryj kompozycję dopasowaną do Twojego charakteru.</p>
+<div id="gender">
+<button class="choice" onclick="startQuiz('male')">DLA NIEGO</button>
+<button class="choice" onclick="startQuiz('female')">DLA NIEJ</button>
+</div>
+
+<div id="quiz">
+<div class="progress" id="progress"></div>
+<div id="question"></div>
+<div id="answers"></div>
+</div>
+
+<div id="result">
+<p class="gold">TWÓJ ZAPACH</p>
+<h3 id="resultName"></h3>
+<p id="resultText"></p>
+<p class="gold" id="alternative"></p>
+<button onclick="restartQuiz()">ROZWIĄŻ PONOWNIE</button>
+</div>
+</section>
+
+<section id="kolekcja">
+<h2 class="gold">LIBER I: INITIUM</h2>
+<p class="intro">12 zapachów. 12 historii. 12 znaczeń.</p>
+<p>Dla niego · Dla niej</p>
+</section>
+
+<section id="filozofia">
+<h2 class="gold">WEAR YOUR STORY</h2>
+<p class="intro">Każdy człowiek ma własną historię. Własne zasady, tajemnice, doświadczenia i wspomnienia. Każdy zapach CODEX UMBRAE jest częścią tej opowieści.</p>
+</section>
+
+<footer>CODEX UMBRAE · WEAR YOUR STORY</footer>
+
+<script>
+const data={
+male:[
+["Co jest dla Ciebie najważniejsze?",["Lojalność i honor","Wolność i niezależność","Odwaga i działanie","Spokój i wewnętrzna siła","Prawda i zaufanie"]],
+["Jak reagujesz, gdy ktoś Cię zawiedzie?",["Daję drugą szansę, ale pamiętam","Odcinam tę osobę bez zbędnych słów","Konfrontuję ją i chcę wyjaśnień","Zachowuję spokój i obserwuję"]],
+["Jaki jesteś na co dzień?",["Spokojny, ale stanowczy","Energiczny i zdecydowany","Tajemniczy i zdystansowany","Towarzyski i spontaniczny","Zależy od sytuacji"]],
+["Jak chcesz być odbierany?",["Jako człowiek z zasadami","Jako silny i pewny siebie","Jako tajemniczy i intrygujący","Jako naturalny i bezpośredni","Jako ktoś, na kim można polegać"]],
+["Co najbardziej Cię odpycha?",["Zdrada i fałsz","Pycha i przechwalanie się","Brak odwagi","Brak szacunku","Zakłamanie i dwulicowość"]],
+["Jaki klimat zapachu najbardziej Ci pasuje?",["Skórzany, głęboki i elegancki","Orientalny, ciepły i intensywny","Świeży, morski i ambrowy","Drzewny, spokojny i tajemniczy","Przyprawowy i wyrazisty"]]
+],
+female:[
+["Co jest dla Ciebie najważniejsze?",["Miłość i bliskość","Niezależność i wolność","Szacunek i godność","Lojalność i zaufanie","Siła i pewność siebie"]],
+["Jak reagujesz, gdy ktoś Cię zrani?",["Wybaczam, ale pamiętam","Odcinam się i idę dalej","Próbuję wszystko wyjaśnić","Ukrywam emocje i zachowuję spokój","Daję drugą szansę, jeśli ktoś na nią zasłuży"]],
+["Jaka jesteś na co dzień?",["Delikatna i spokojna","Energiczna i spontaniczna","Tajemnicza i zdystansowana","Silna i zdecydowana","Zmienna, zależnie od sytuacji"]],
+["Jak chciałabyś być odbierana?",["Jako elegancka i wyjątkowa","Jako niezależna i pewna siebie","Jako ciepła i serdeczna","Jako tajemnicza i intrygująca","Jako silna i nieustępliwa"]],
+["Czego najbardziej nie tolerujesz?",["Zdrady i kłamstwa","Braku szacunku","Kontrolowania i ograniczania","Fałszu i dwulicowości","Pycha i zadufania w sobie"]],
+["Jaki klimat zapachu najbardziej Ci odpowiada?",["Owocowy, słodki i otulający","Kwiatowy, elegancki i delikatny","Orientalny, ciepły i tajemniczy","Zmysłowy, głęboki i wyrazisty","Świeży, lekki i subtelny"]]
+]
+};
+
+const scents={
+male:[
+["OMERTA","Lojalność, honor i skórzana elegancja.","CAVE CUI FIDAS"],
+["CAVE CUI FIDAS","Ostrożność, tajemnica i głęboki charakter.","OMERTA"],
+["FORTES FORTUNA IUVAT","Odwaga, energia i zdecydowanie.","CARPE DIEM"],
+["PER ASPERA AD ASTRA","Wytrwałość, siła i spokój.","OMERTA"],
+["MEMENTO VIVERE","Radość życia i swoboda.","CARPE DIEM"],
+["CARPE DIEM","Działanie, spontaniczność i energia.","FORTES FORTUNA IUVAT"]
+],
+female:[
+["FEMME FATALE","Niezależność, pewność siebie i tajemnica.","VENENUM"],
+["REGINA NOCTIS","Godność, siła i elegancja.","FEMME FATALE"],
+["VENENUM","Pokusa, tajemnica i wyrazisty charakter.","REGINA NOCTIS"],
+["MALA FIDE","Ostrożność, prawda i granice zaufania.","MEA CULPA"],
+["AMOR FATI","Miłość, bliskość, ciepło i umiejętność wybaczania.","MEA CULPA"],
+["MEA CULPA","Szczerość, odpowiedzialność i wrażliwość.","AMOR FATI"]
+]
+};
+
+let gender="",step=0,answers=[];
+function startQuiz(type){
+gender=type;step=0;answers=[];
+document.getElementById("gender").style.display="none";
+document.getElementById("result").style.display="none";
+document.getElementById("quiz").style.display="block";
+showQuestion();
+}
+function showQuestion(){
+const q=data[gender][step];
+document.getElementById("progress").textContent="PYTANIE "+(step+1)+" / 6";
+document.getElementById("question").textContent=q[0];
+const area=document.getElementById("answers");
+area.innerHTML="";
+q[1].forEach((answer,index)=>{
+const b=document.createElement("button");
+b.className="answer";b.textContent=answer;
+b.onclick=()=>choose(index);
+area.appendChild(b);
+});
+}
+function choose(index){
+answers.push(index);
+step++;
+if(step<6)showQuestion();else showResult();
+}
+function showResult(){
+document.getElementById("quiz").style.display="none";
+const weights=gender==="male"
+?[[0,1,3,3,2],[1,0,3,1,2],[2,5,4,3,5],[0,3,1,2,1],[0,1,2,3,1],[0,1,2,3,4]]
+:[[5,2,1,3,1],[2,1,3,3,4],[1,0,2,3,4],[2,0,4,2,3],[4,0,3,2,3],[3,4,2,3,1]];
+const scores=Array(6).fill(0);
+answers.forEach((a,i)=>{scores[weights[i][a]]+=1});
+const best=scores.indexOf(Math.max(...scores));
+const result=scents[gender][best];
+document.getElementById("resultName").textContent=result[0];
+document.getElementById("resultText").textContent=result[1];
+document.getElementById("alternative").textContent="ALTERNATYWA: "+result[2];
+document.getElementById("result").style.display="block";
+}
+function restartQuiz(){
+document.getElementById("result").style.display="none";
+document.getElementById("gender").style.display="block";
+}
+</script>
+</body>
+</html>
